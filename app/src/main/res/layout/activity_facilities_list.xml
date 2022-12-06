@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".FacilitiesList">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="46dp"
+        android:layout_height="49dp"
+        android:background="@drawable/back_button"
+        app:layout_constraintBottom_toTopOf="@+id/txtName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.418" />
+
+    <TextView
+        android:id="@+id/editFacilityInfo"
+        android:layout_width="297dp"
+        android:layout_height="47dp"
+        android:text="Facilities List"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.573" />
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="334dp"
+        android:layout_height="389dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditFacility"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.829"
+        app:srcCompat="@drawable/white_column" />
+
+    <TextView
+        android:id="@+id/txtLocation"
+        android:layout_width="89dp"
+        android:layout_height="25dp"
+        android:fontFamily="monospace"
+        android:text="Location"
+        android:textAlignment="center"
+        android:textColor="#050505"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditFacility"
+        app:layout_constraintEnd_toStartOf="@+id/txtCapacity"
+        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/back"
+        app:layout_constraintVertical_bias="0.064" />
+
+    <TextView
+        android:id="@+id/txtCapacity"
+        android:layout_width="89dp"
+        android:layout_height="25dp"
+        android:fontFamily="monospace"
+        android:text="Capacity"
+        android:textAlignment="center"
+        android:textColor="#050505"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditFacility"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/back"
+        app:layout_constraintVertical_bias="0.064" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="46dp"
+        android:layout_height="22dp"
+        android:fontFamily="monospace"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textColor="#050505"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txtLocation"
+        app:layout_constraintHorizontal_bias="0.704"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/back"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <Button
+        android:id="@+id/btnEditFacility"
+        android:layout_width="119dp"
+        android:layout_height="50dp"
+        android:background="@drawable/black_btn"
+        android:text="Edit"
+        android:textColor="#FDFCFC"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.791" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="315dp"
+        android:layout_height="302dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/back"
+        app:layout_constraintEnd_toEndOf="@+id/back"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/back"
+        app:layout_constraintTop_toBottomOf="@+id/txtLocation"
+        app:layout_constraintVertical_bias="0.205">
+
+        <RadioButton
+            android:id="@+id/rbDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Barbeque Area" />
+
+        <RadioButton
+            android:id="@+id/rbDetail2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sauna Room" />
+
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="439dp"
+        android:layout_height="673dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.315"
+        app:srcCompat="@drawable/building" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="119dp"
+        android:layout_height="50dp"
+        android:background="@drawable/black_btn"
+        android:text="Delete"
+        android:textColor="#FDFCFC"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.791" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

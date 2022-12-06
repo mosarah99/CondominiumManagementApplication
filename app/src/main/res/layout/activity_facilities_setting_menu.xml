@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".FacilitiesSettingMenu">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="46dp"
+        android:layout_height="49dp"
+        android:background="@drawable/back_button"
+
+        app:layout_constraintBottom_toTopOf="@+id/btnAddFacility"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.356" />
+
+    <Button
+        android:id="@+id/btnAddFacility"
+        android:layout_width="266dp"
+        android:layout_height="80dp"
+        android:background="@drawable/white_btn"
+        android:fontFamily="@font/alata"
+        android:text="ADD NEW FACILITY"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="16sp"
+
+        app:iconTint="#EC9595"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditFacility"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.861"
+        app:rippleColor="#EC9595" />
+
+    <Button
+        android:id="@+id/btnMaintenance"
+        android:layout_width="266dp"
+        android:layout_height="80dp"
+        android:background="@drawable/white_btn"
+        android:fontFamily="@font/alata"
+        android:text="FACILITIES MAINTENANCE"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:iconTint="#EC9595"
+        app:layout_constraintBottom_toTopOf="@+id/btnFacilitiesReport"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.935"
+        app:rippleColor="#EC9595" />
+
+    <Button
+        android:id="@+id/btnFacilitiesReport"
+        android:layout_width="266dp"
+        android:layout_height="80dp"
+        android:background="@drawable/white_btn"
+        android:fontFamily="@font/alata"
+        android:padding="10dp"
+        android:text="FACILITIES BOOKING REPORT"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:iconTint="#EC9595"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666"
+        app:rippleColor="#EC9595" />
+
+    <Button
+        android:id="@+id/btnEditFacility"
+        android:layout_width="266dp"
+        android:layout_height="80dp"
+        android:background="@drawable/white_btn"
+        android:fontFamily="@font/alata"
+        android:text="EDIT FACILITY INFORMATION"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:iconTint="#EC9595"
+        app:layout_constraintBottom_toTopOf="@+id/btnMaintenance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.884"
+        app:rippleColor="#EC9595" />
+
+    <ImageView
+        android:id="@+id/building"
+        android:layout_width="435dp"
+        android:layout_height="759dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditFacility"
+        app:layout_constraintVertical_bias="0.462"
+        app:srcCompat="@drawable/building" />
+
+    <TextView
+        android:id="@+id/facilities_Setting"
+        android:layout_width="215dp"
+        android:layout_height="39dp"
+        android:text="Facilities Setting"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddFacility"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.433" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
