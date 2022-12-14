@@ -14,7 +14,7 @@ public class EditFacilityInfo extends AppCompatActivity {
 
     ImageButton btnBack;
     Button btnUpdate;
-    private EditText etName, etLocation, etCapacity;
+    EditText etName, etLocation, etCapacity;
     private String facilityName, location, capacity;
 
     @Override

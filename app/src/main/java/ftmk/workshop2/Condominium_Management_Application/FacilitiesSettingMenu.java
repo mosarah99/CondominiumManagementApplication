@@ -17,9 +17,9 @@ public class FacilitiesSettingMenu extends AppCompatActivity {
         setContentView(R.layout.activity_facilities_setting_menu);
 
         //Get all Id's
-        btnAddFacility = (Button) findViewById(R.id.btnAddFacility);
-        btnEditFacility = (Button) findViewById(R.id.btnEditFacility);
-        btnMaintenance = (Button) findViewById(R.id.btnMaintenance);
+        btnAddFacility = (Button) findViewById(R.id.btnBooking);
+        btnEditFacility = (Button) findViewById(R.id.btnEditBooking);
+        btnMaintenance = (Button) findViewById(R.id.btnCancelBooking);
         btnFacilitiesReport = (Button) findViewById(R.id.btnFacilitiesReport);
 
         //Intent to Add New Facility
