@@ -1,11 +1,11 @@
 package ftmk.workshop2.Condominium_Management_Application;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class FacilitiesSettingMenu extends AppCompatActivity {
 
@@ -43,14 +43,14 @@ public class FacilitiesSettingMenu extends AppCompatActivity {
         });
 
         //Intent to Facilities Maintenance
-        /*btnMaintenance.setOnClickListener(new View.OnClickListener() {
+        btnMaintenance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentAdd = new Intent(FacilitiesSettingMenu.this,
-                        EditFacilityInfo.class);
+                        FacilityMaintenance.class);
                 startActivity(intentAdd);
             }
-        });*/
+        });
 
         /*//Intent to Facilities Booking Report
         btnFacilitiesReport.setOnClickListener(new View.OnClickListener() {

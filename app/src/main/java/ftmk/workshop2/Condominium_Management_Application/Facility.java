@@ -1,54 +1,52 @@
 package ftmk.workshop2.Condominium_Management_Application;
 
-import java.io.Serializable;
-
 public class Facility {
 
-    private String FacilityID;
-    private String FacilityName;
-    private String Location;
-    private String Capacity;
+    private String facilityID;
+    private String facilityName;
+    private String location;
+    private String capacity;
 
     public Facility(){
 
     }
     public String getFacilityID() {
-        return FacilityID;
+        return facilityID;
     }
 
     public void setFacilityID(String facilityID) {
-        FacilityID = facilityID;
+        facilityID = facilityID;
     }
 
     public String getFacilityName() {
-        return FacilityName;
+        return facilityName;
     }
 
     public void setFacilityName(String facilityName) {
-        FacilityName = facilityName;
+        facilityName = facilityName;
     }
 
     public String getLocation() {
-        return Location;
+        return location;
     }
 
     public void setLocation(String location) {
-        Location = location;
+        location = location;
     }
 
     public String getCapacity() {
-        return Capacity;
+        return capacity;
     }
 
     public void setCapacity(String capacity) {
-        Capacity = capacity;
+        capacity = capacity;
     }
 
     public Facility(String facilityID, String facilityName, String location, String capacity) {
-        FacilityID = facilityID;
-        FacilityName = facilityName;
-        Location = location;
-        Capacity = capacity;
+        this.facilityID = facilityID;
+        this.facilityName = facilityName;
+        this.location = location;
+        this.capacity = capacity;
     }
 
 

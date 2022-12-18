@@ -14,7 +14,7 @@
         android:layout_width="46dp"
         android:layout_height="49dp"
         android:background="@drawable/back_button"
-        app:layout_constraintBottom_toTopOf="@+id/txtFacilityName"
+        app:layout_constraintBottom_toTopOf="@+id/txtFacilityID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +102,7 @@
         app:layout_constraintVertical_bias="0.633" />
 
     <TextView
-        android:id="@+id/txtFacilityName"
+        android:id="@+id/txtFacilityID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Facilty Name"

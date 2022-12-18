@@ -29,6 +29,7 @@
         android:layout_height="47dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:paddingTop="5dp"
         android:layout_marginTop="41dp"
         android:layout_marginEnd="34dp"
         android:text="Facilities List"
@@ -38,10 +39,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toEndOf="@+id/btnBack"
-        app:layout_constraintTop_toTopOf="parent"
-       />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="412dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginBottom="1dp"
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/building" />
+
+    <!--<Button
         android:id="@+id/btnDelete"
         android:layout_width="122dp"
         android:layout_height="48dp"
@@ -80,21 +96,24 @@
         app:layout_constraintHorizontal_bias="0.205"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
+        app:layout_constraintVertical_bias="0.883" />-->
 
     <ListView
         android:id="@+id/facilityListView"
-        android:layout_width="wrap_content"
-        android:layout_height="432dp"
+        android:layout_width="302dp"
+        android:layout_height="470dp"
         android:layout_below="@id/editFacilityInfo"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="52dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="35dp"
-        android:layout_marginEnd="39dp"
+        android:layout_marginEnd="50dp"
+
+        android:layout_marginBottom="138dp"
         android:background="@drawable/white_column"
-        app:layout_constraintBottom_toTopOf="@+id/btnDelete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,3 +121,5 @@
         app:layout_constraintVertical_bias="0.464" />
 
 </RelativeLayout>
+
+    <!--app:layout_constraintBottom_toTopOf="@+id/btnDelete"-->

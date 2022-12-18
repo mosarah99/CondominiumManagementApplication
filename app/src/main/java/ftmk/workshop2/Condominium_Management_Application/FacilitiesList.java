@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -14,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -26,19 +26,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FacilitiesList extends AppCompatActivity {
 
     //Declare Button
     ImageButton btnBack;
-    Button btnEdit;
+    //Button btnEdit;
 
     ListView listView;
     FacilityAdapter facilityAdapter;
     public static ArrayList<Facility> facilityArrayList = new ArrayList<>();
-
-
-    String url = "http://192.168.1.7/get.php";
+    String url = "http://192.168.1.9/get.php";
     Facility facility;
 
 
@@ -53,7 +53,7 @@ public class FacilitiesList extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, final int position, long facilityID) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 ProgressDialog progressDialog = new ProgressDialog(view.getContext());
@@ -67,10 +67,16 @@ public class FacilitiesList extends AppCompatActivity {
                         switch (i){
 
                             case 0:
+                                startActivity(new Intent(getApplicationContext(),DetailFacility.class)
+                                        .putExtra("position",position));
                                 break;
                             case 1:
+                                startActivity(new Intent(getApplicationContext(),EditFacilityInfo.class)
+                                        .putExtra("position",position));
                                 break;
                             case 2:
+                                deleteData(facilityArrayList.get(position).getFacilityID());
+                                
                                 break;
                         }
 
@@ -83,7 +89,7 @@ public class FacilitiesList extends AppCompatActivity {
 
         //Get all Id's
         btnBack = (ImageButton) findViewById(R.id.btnBack);
-        btnEdit = (Button) findViewById(R.id.btnEditBooking);
+        //btnEdit = (Button) findViewById(R.id.btnEditBooking);
 
 
         //Intent to Facilities Setting Menu
@@ -97,7 +103,7 @@ public class FacilitiesList extends AppCompatActivity {
             }
         });
 
-        //Intent to Edit Facility Information
+        /*//Intent to Edit Facility Information
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,7 +111,7 @@ public class FacilitiesList extends AppCompatActivity {
                         EditFacilityInfo.class);
                 startActivity(intentBack);
             }
-        });
+        });*/
 
         /*//Intent to Edit Facility Page
         btnEdit = (Button) findViewById(R.id.btnEditFacility);
@@ -120,6 +126,46 @@ public class FacilitiesList extends AppCompatActivity {
 
 
         getData();
+
+    }
+
+    private void deleteData(final String facilityID) {
+
+        StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.1.9/delete_facility.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if(response.equalsIgnoreCase("Data Deleted")){
+                            Toast.makeText(FacilitiesList.this, "Data Deleted Successfully",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(FacilitiesList.this, "Data Not Deleted",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(FacilitiesList.this, error.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("facilityID", facilityID);
+
+
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+
 
     }
 
@@ -169,6 +215,7 @@ public class FacilitiesList extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
     }
+
 
 }
 

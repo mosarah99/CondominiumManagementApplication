@@ -95,7 +95,7 @@ public class AddNewFacility extends AppCompatActivity {
     //Insert data into database
     public void InsertData(final String facilityName, final String location, final String capacity) {
         // url to post our data
-        String URL = "http://192.168.1.7/insert_facility.php";
+        String URL = "http://192.168.1.9/insert_facility.php";
 
         // creating a new variable for our request queue
         RequestQueue queue = Volley.newRequestQueue(AddNewFacility.this);
@@ -107,7 +107,8 @@ public class AddNewFacility extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     // on below line we are displaying a success toast message.
-                    Toast.makeText(AddNewFacility.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddNewFacility.this,
+                            jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -130,7 +131,7 @@ public class AddNewFacility extends AppCompatActivity {
             public String getBodyContentType() {
                 return "application/x-www-form-urlencoded; charset=UTF-8";
             }
-
+            @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
 
