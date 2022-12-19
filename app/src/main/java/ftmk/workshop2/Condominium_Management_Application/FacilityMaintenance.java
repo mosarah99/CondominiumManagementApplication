@@ -121,8 +121,9 @@ public class FacilityMaintenance extends AppCompatActivity {
         });
         requestQueue.add(jsonObjectRequest);
 
-        /*String facilitySpinner = spinnerFacility.getSelectedItem().toString();
+       /* String facilitySpinner = spinnerFacility.getSelectedItem().toString();
         String timeSpinner = spinnerTime.getSelectedItem().toString();*/
+
 
 
 
