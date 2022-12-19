@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="#E6EEF4"
     tools:context=".AddNewFacility">
 
 
@@ -26,6 +27,7 @@
         android:layout_width="215dp"
         android:layout_height="39dp"
         android:text="Add New Facility"
+        android:layout_marginLeft="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -149,7 +151,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTxtFCapacity"
         app:layout_constraintVertical_bias="0.178" />
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/imageView"
         android:layout_width="434dp"
         android:layout_height="747dp"
@@ -159,7 +161,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnAdd"
         app:layout_constraintVertical_bias="0.321"
-        app:srcCompat="@drawable/building" />
+        app:srcCompat="@drawable/building" />-->
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="412dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginBottom="1dp"
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/building"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

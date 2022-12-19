@@ -89,7 +89,6 @@ public class FacilitiesList extends AppCompatActivity {
 
         //Get all Id's
         btnBack = (ImageButton) findViewById(R.id.btnBack);
-        //btnEdit = (Button) findViewById(R.id.btnEditBooking);
 
 
         //Intent to Facilities Setting Menu
@@ -102,28 +101,6 @@ public class FacilitiesList extends AppCompatActivity {
                 startActivity(intentBack);
             }
         });
-
-        /*//Intent to Edit Facility Information
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentBack = new Intent(FacilitiesList.this,
-                        EditFacilityInfo.class);
-                startActivity(intentBack);
-            }
-        });*/
-
-        /*//Intent to Edit Facility Page
-        btnEdit = (Button) findViewById(R.id.btnEditFacility);
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentBack = new Intent(FacilitiesList.this,
-                        FacilitiesSettingMenu.class);
-                startActivity(intentBack);
-            }
-        });*/
-
 
         getData();
 

@@ -5,7 +5,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
+    android:background="#E6EEF4"
     tools:context=".FacilitiesSettingMenu">
 
     <ImageButton
@@ -25,7 +25,7 @@
         android:id="@+id/btnBooking"
         android:layout_width="266dp"
         android:layout_height="80dp"
-        android:background="@drawable/white_btn"
+        android:background="@drawable/light_blue_btn"
         android:fontFamily="@font/alata"
         android:text="ADD NEW FACILITY"
         android:textAlignment="center"
@@ -46,7 +46,7 @@
         android:id="@+id/btnCancelBooking"
         android:layout_width="266dp"
         android:layout_height="80dp"
-        android:background="@drawable/white_btn"
+        android:background="@drawable/light_blue_btn"
         android:fontFamily="@font/alata"
         android:text="FACILITIES MAINTENANCE"
         android:textAlignment="center"
@@ -66,7 +66,7 @@
         android:id="@+id/btnFacilitiesReport"
         android:layout_width="266dp"
         android:layout_height="80dp"
-        android:background="@drawable/white_btn"
+        android:background="@drawable/light_blue_btn"
         android:fontFamily="@font/alata"
         android:padding="10dp"
         android:text="FACILITIES BOOKING REPORT"
@@ -87,7 +87,7 @@
         android:id="@+id/btnEditBooking"
         android:layout_width="266dp"
         android:layout_height="80dp"
-        android:background="@drawable/white_btn"
+        android:background="@drawable/light_blue_btn"
         android:fontFamily="@font/alata"
         android:text="EDIT FACILITY INFORMATION"
         android:textAlignment="center"
@@ -104,6 +104,22 @@
         app:rippleColor="#EC9595" />
 
     <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="412dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginBottom="1dp"
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/building"
+        tools:ignore="MissingConstraints" />
+    <!--<ImageView
         android:id="@+id/building"
         android:layout_width="435dp"
         android:layout_height="759dp"
@@ -113,7 +129,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnEditBooking"
         app:layout_constraintVertical_bias="0.462"
-        app:srcCompat="@drawable/building" />
+        app:srcCompat="@drawable/building" />-->
 
     <TextView
         android:id="@+id/facilities_Menu"
@@ -123,6 +139,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/btnBooking"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"

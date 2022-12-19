@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="@drawable/gradient"
+    android:background="#E6EEF4"
     tools:context=".DetailFacility">
 
 
@@ -60,6 +60,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/white_column"
         android:padding="10dp"
+        android:textColor="@color/black"
         android:text="ID:"
         android:textSize="20sp" />
 
@@ -70,6 +71,7 @@
         android:background="@drawable/white_column"
         android:layout_below="@id/txtid"
         android:padding="10dp"
+        android:textColor="@color/black"
         android:text="Facility Name:"
         android:textSize="20sp"
         android:id="@+id/txtName"
@@ -83,6 +85,7 @@
         android:background="@drawable/white_column"
         android:layout_below="@id/txtName"
         android:padding="10dp"
+        android:textColor="@color/black"
         android:text="Location:"
         android:textSize="20sp"
         android:id="@+id/txtLocation"
@@ -96,6 +99,7 @@
         android:background="@drawable/white_column"
         android:layout_below="@+id/txtLocation"
         android:padding="10dp"
+        android:textColor="@color/black"
         android:text="Capacity:"
         android:textSize="20sp"
         android:id="@+id/txtCapacity"
