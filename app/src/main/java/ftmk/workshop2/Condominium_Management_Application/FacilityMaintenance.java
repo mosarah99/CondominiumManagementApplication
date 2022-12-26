@@ -1,15 +1,20 @@
 package ftmk.workshop2.Condominium_Management_Application;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,31 +23,39 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FacilityMaintenance extends AppCompatActivity {
 
     Spinner spinnerFacility, spinnerTime;
     ImageButton btnBack;
     EditText edTxtDate;
+    Button btnSave;
 
-
+    private String facilityName, maintenanceTime, maintenanceDate;
     private DatePickerDialog datePicker;
+
 
     ArrayList<String> facilityList = new ArrayList<>();
     ArrayAdapter<String> facilityAdapter;
     RequestQueue requestQueue;
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facility_maintenance);
+
 
         //Assign variable
         edTxtDate = (EditText) findViewById(R.id.editTxtDate);
@@ -53,6 +66,9 @@ public class FacilityMaintenance extends AppCompatActivity {
                 if(motionEvent.getAction() == MotionEvent.ACTION_UP){
                     //Initialize variable
                     final Calendar cldr = Calendar.getInstance();
+
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    String date = simpleDateFormat.format(cldr.getTime());
 
                     //Get day, month, year
                     int day = cldr.get(Calendar.DAY_OF_MONTH);
@@ -71,7 +87,6 @@ public class FacilityMaintenance extends AppCompatActivity {
                             }, year,month, day);
                     datePicker.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                     datePicker.show();
-
                 }
                 return false;
             }
@@ -92,7 +107,7 @@ public class FacilityMaintenance extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
         spinnerFacility = findViewById(R.id.spinnerFacility);
-        String url = "http://192.168.1.9/populate_facility.php";
+        String url = "http://192.168.1.14/populate_facility.php";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -121,14 +136,91 @@ public class FacilityMaintenance extends AppCompatActivity {
         });
         requestQueue.add(jsonObjectRequest);
 
-       /* String facilitySpinner = spinnerFacility.getSelectedItem().toString();
-        String timeSpinner = spinnerTime.getSelectedItem().toString();*/
+
+        btnSave = (Button) findViewById(R.id.btnSave);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getMaintenance();
 
 
+            }
+        });
 
 
 
     }
 
+    private void getMaintenance() {
+
+        spinnerFacility = (Spinner) findViewById(R.id.spinnerFacility);
+        spinnerTime = (Spinner) findViewById(R.id.spinnerTime);
+        edTxtDate = (EditText) findViewById(R.id.editTxtDate);
+        facilityName = spinnerFacility.getSelectedItem().toString().trim();
+        maintenanceTime = spinnerTime.getSelectedItem().toString().trim();
+        maintenanceDate = edTxtDate.getText().toString().trim();
+
+        if(TextUtils.isEmpty(maintenanceDate)){
+            edTxtDate.setError("Please select maintenance date.");
+        }
+        else {
+            addMaintenance(facilityName,maintenanceTime,maintenanceDate);
+            Intent intentBack = new Intent(FacilityMaintenance.this,
+                    SuccessfullSavedMaintenance.class);
+            startActivity(intentBack);
+
+        }
+
+    }
+
+    private void addMaintenance(String facilityName, String maintenanceTime, String maintenanceDate)
+    {
+        // url to post our data
+        String url = "http://192.168.1.14/insert_maintenance.php";
+
+        // creating a new variable for our request queue
+        RequestQueue queue = Volley.newRequestQueue(FacilityMaintenance.this);
+
+        // on below line we are calling a string
+        // request method to post the data to our API
+        // in this we are calling a post method.
+        StringRequest request = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("TAG", "RESPONSE IS " + response);
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    // on below line we are displaying a success toast message.
+                    Toast.makeText(FacilityMaintenance.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // method to handle errors.
+                Toast.makeText(FacilityMaintenance.this, "Fail to get response = " + error,
+                        Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded; charset=UTF-8";
+            }
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("facilityName", facilityName);
+                params.put("maintenanceTime", maintenanceTime);
+                params.put("maintenanceDate", maintenanceDate);
+
+                return params;
+            }
+        };
+        queue.add(request);
+    }
 
 }

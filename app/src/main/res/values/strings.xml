@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Condominium Management Application</string>
+    <string name="app_name">iCondo</string>
     <string-array name="str2">
         <item>9am-11am</item>
         <item>11am-1pm</item>
