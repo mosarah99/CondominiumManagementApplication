@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="#E6EEF4"
+    tools:context=".DetailBooking">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="49dp"
+        android:layout_height="87dp"
+        android:layout_above="@id/txtid"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="false"
+        android:layout_marginTop="38dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toLeftOf="@id/detailMaintenance"
+        android:background="@drawable/back_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    />
+
+    <TextView
+        android:id="@+id/detailBooking"
+        android:layout_width="297dp"
+        android:layout_height="47dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="18dp"
+        android:text="Details of Facility Booking"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtid"
+        android:layout_width="359dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailBooking"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/white_column"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:text="ID:"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="359dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/white_column"
+        android:layout_below="@id/txtid"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:text="Facility Name:"
+        android:textSize="20sp"
+        android:id="@+id/txtName"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="359dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/white_column"
+        android:layout_below="@id/txtName"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:text="Booking Time:"
+        android:textSize="20sp"
+        android:id="@+id/txtTime"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="359dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/white_column"
+        android:layout_below="@+id/txtTime"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:text="Booking Date:"
+        android:textSize="20sp"
+        android:id="@+id/txtDate"
+        android:layout_marginBottom="10dp"
+        />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="412dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-1dp"
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/building" />
+
+</RelativeLayout>

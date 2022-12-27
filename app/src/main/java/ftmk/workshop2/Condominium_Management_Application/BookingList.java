@@ -30,38 +30,38 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MaintenanceList extends AppCompatActivity {
+public class BookingList extends AppCompatActivity {
 
     //Declare Button
     ImageButton btnBack;
 
     SwipeRefreshLayout swipeRefresh;
     ListView listView;
-    MaintenanceAdapter maintenanceAdapter;
-    public static ArrayList<Maintenance> maintenanceArrayList = new ArrayList<>();
+    BookingAdapter bookingAdapter;
+    public static ArrayList<Booking> bookingArrayList = new ArrayList<>();
     String url1 = "http://192.168.1.14/";
-    String url = url1+"get_maintenance.php";
-    Maintenance maintenance;
+    String url = url1+"get_booking.php";
+    Booking booking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maintenance_list);
+        setContentView(R.layout.activity_booking_list);
 
         swipeRefresh = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshLayout);
-        listView = findViewById(R.id.maintenanceListView);
-        maintenanceAdapter = new MaintenanceAdapter(this, maintenanceArrayList);
-        listView.setAdapter(maintenanceAdapter);
+        listView = findViewById(R.id.bookingListView);
+        bookingAdapter = new BookingAdapter(this, bookingArrayList);
+        listView.setAdapter(bookingAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, final int position, long maintenanceID) {
+            public void onItemClick(AdapterView<?> adapterView, View view, final int position, long bookingID) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 ProgressDialog progressDialog = new ProgressDialog(view.getContext());
 
                 CharSequence[] dialogItem = {"View Data", "Edit Data", "Delete Data"};
-                builder.setTitle(maintenanceArrayList.get(position).getFacilityName());
+                builder.setTitle(bookingArrayList.get(position).getFacilityName());
                 builder.setItems(dialogItem, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
@@ -69,16 +69,16 @@ public class MaintenanceList extends AppCompatActivity {
                         switch (i) {
 
                             case 0:
-                                startActivity(new Intent(getApplicationContext(), DetailMaintenance.class)
+                                startActivity(new Intent(getApplicationContext(), DetailBooking.class)
                                         .putExtra("position", position));
                                 break;
                             case 1:
-                                startActivity(new Intent(getApplicationContext(), Edit_maintenance_info.class)
+                                startActivity(new Intent(getApplicationContext(), Edit_booking_info.class)
                                         .putExtra("position", position));
                                 break;
 
                             case 2:
-                                deleteData(maintenanceArrayList.get(position).getMaintenanceID());
+                                deleteData(bookingArrayList.get(position).getBookingID());
 
                                 break;
 
@@ -94,14 +94,13 @@ public class MaintenanceList extends AppCompatActivity {
         //Get all Id's
         btnBack = (ImageButton) findViewById(R.id.btnBack);
 
-
-        //Intent to Facilities Setting Menu
+        //Intent to Facility Booking Menu
         btnBack = (ImageButton) findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(MaintenanceList.this,
-                        FacilitiesSettingMenu.class);
+                Intent intentBack = new Intent(BookingList.this,
+                        FacilityBookingMenu.class);
                 startActivity(intentBack);
             }
         });
@@ -111,50 +110,12 @@ public class MaintenanceList extends AppCompatActivity {
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Intent intentBack = new Intent(MaintenanceList.this,
-                        MaintenanceList.class);
+                Intent intentBack = new Intent(BookingList.this,
+                        BookingList.class);
                 startActivity(intentBack);
                 overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             }
         });
-    }
-
-        private void deleteData(final String maintenanceID) {
-
-        StringRequest request = new StringRequest(Request.Method.POST, url1+"delete_maintenance.php",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        if (response.equalsIgnoreCase("Data Deleted")) {
-                            Toast.makeText(MaintenanceList.this, "Data Deleted Successfully",
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(MaintenanceList.this, "Data Not Deleted",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MaintenanceList.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-
-                Map<String, String> params = new HashMap<String, String>();
-
-                params.put("maintenanceID", maintenanceID);
-
-
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(request);
-
 
     }
 
@@ -166,7 +127,7 @@ public class MaintenanceList extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
-                        maintenanceArrayList.clear();
+                        bookingArrayList.clear();
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
@@ -178,14 +139,14 @@ public class MaintenanceList extends AppCompatActivity {
 
                                     JSONObject object = jsonArray.getJSONObject(i);
 
-                                    String MaintenanceID = object.getString("maintenanceID");
+                                    String BookingID = object.getString("bookingID");
                                     String FacilityName = object.getString("facilityName");
-                                    String MaintenanceTime = object.getString("maintenanceTime");
-                                    String MaintenanceDate = object.getString("maintenanceDate");
+                                    String BookingTime = object.getString("bookingTime");
+                                    String BookingDate = object.getString("bookingDate");
 
-                                    maintenance = new Maintenance(MaintenanceID, FacilityName, MaintenanceTime,MaintenanceDate);
-                                    maintenanceArrayList.add(maintenance);
-                                    maintenanceAdapter.notifyDataSetChanged();
+                                    booking = new Booking(BookingID, FacilityName, BookingTime,BookingDate);
+                                    bookingArrayList.add(booking);
+                                    bookingAdapter.notifyDataSetChanged();
                                 }
                             }
 
@@ -197,11 +158,49 @@ public class MaintenanceList extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MaintenanceList.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(BookingList.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(request);
     }
 
+    private void deleteData(final String bookingID) {
+
+        StringRequest request = new StringRequest(Request.Method.POST, url1+"delete_booking.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        if (response.equalsIgnoreCase("Data Deleted")) {
+                            Toast.makeText(BookingList.this, "Data Deleted Successfully",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(BookingList.this, "Data Not Deleted",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(BookingList.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("bookingID", bookingID);
+
+
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+
+
+    }
 }

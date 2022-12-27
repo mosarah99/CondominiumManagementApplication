@@ -102,7 +102,7 @@
         android:id="@+id/txtFacilityCapacity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Capacity (Number of peoples )"
+        android:text="Capacity (Number of participant)"
         android:textColor="#050505"
         android:textSize="16sp"
         android:textStyle="bold"

@@ -48,9 +48,11 @@ public class Edit_maintenance_info extends AppCompatActivity {
     ArrayList<String> facilityList = new ArrayList<>();
     ArrayAdapter<String> facilityAdapter;
     RequestQueue requestQueue;
+    String url1 = "http://192.168.1.14/";
 
     private int position;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +119,7 @@ public class Edit_maintenance_info extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
         spinnerFacility = findViewById(R.id.spinnerFacility);
-        String url = "http://192.168.1.14/populate_facility.php";
+        String url = url1+"populate_facility.php";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -166,9 +168,10 @@ public class Edit_maintenance_info extends AppCompatActivity {
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Updating....");
+        //progressDialog.getWindow().setGravity(Gravity.BOTTOM);
         progressDialog.show();
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.1.14/update_maintenance.php",
+        StringRequest request = new StringRequest(Request.Method.POST, url1+"update_maintenance.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

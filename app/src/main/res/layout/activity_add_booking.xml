@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6EEF4"
-    tools:context=".NewBooking">
+    tools:context=".AddNewBooking">
 
     <ImageButton
         android:id="@+id/btnBack"
@@ -22,22 +22,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <ImageButton
+        android:id="@+id/btnEditBooking"
+        android:layout_width="44dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="44dp"
+        android:layout_toRightOf="@id/addNew"
+        android:background="@drawable/ic_baseline_edit_24"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/addNew"
-        android:layout_width="297dp"
+        android:layout_width="216dp"
         android:layout_height="47dp"
-        android:text="Facilities Booking"
-        android:paddingTop="5dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="41dp"
         android:layout_marginEnd="34dp"
+        android:layout_toRightOf="@id/btnBack"
+        android:paddingTop="5dp"
+        android:text="Facilities Booking"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.322"
-        android:layout_toRightOf="@id/btnBack"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.066" />
 
@@ -63,6 +72,9 @@
         android:id="@+id/spinnerFacility"
         android:layout_width="310dp"
         android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:paddingTop="10dp"
         android:layout_centerVertical="true"
         android:background="@drawable/spinner_style"
         android:gravity="center"
@@ -95,19 +107,22 @@
     <Spinner
         android:id="@+id/spinnerTime"
         android:layout_width="310dp"
-        android:layout_height="50dp"
+        android:layout_height="49dp"
+        android:layout_below="@id/txtFacilityTime"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:paddingTop="10dp"
         android:background="@drawable/spinner_style"
+        android:elevation="10dp"
+        android:entries="@array/str2"
         android:gravity="center"
         android:spinnerMode="dropdown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        android:entries="@array/str2"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="50dp"
-        android:elevation="10dp"
-        android:layout_below="@id/txtFacilityTime"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/txtDate"
@@ -128,40 +143,78 @@
 
 
     <EditText
-        android:id="@+id/editTxtDate"
+        android:id="@+id/editBookingDate"
         android:layout_width="310dp"
         android:layout_height="50dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:enabled="false"
         android:background="@drawable/white_column"
         android:layout_below="@id/txtDate"
         android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="50dp"
         android:elevation="10dp"
         android:ems="10"
         android:hint="Enter booking date"
-        android:inputType="textPersonName"
         android:padding="10dp"
         android:textSize="16sp"
         tools:layout_editor_absoluteX="59dp"
         tools:layout_editor_absoluteY="166dp" />
 
+    <TextView
+        android:id="@+id/txtParticipant"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editBookingDate"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Max. participant"
+        android:textColor="#050505"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.153"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    <EditText
+        android:id="@+id/editTxtParticipant"
+        android:layout_width="310dp"
+        android:layout_height="50dp"
+        android:background="@drawable/white_column"
+        android:elevation="10dp"
+        android:ems="10"
+        android:hint="Number of participant "
+        android:inputType="numberDecimal"
+        android:enabled="false"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:layout_below="@id/txtParticipant"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.138" />
+
     <Button
         android:id="@+id/btnBook"
         android:layout_width="136dp"
         android:layout_height="48dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="97dp"
         android:background="@drawable/black_btn"
-        android:layout_below="@id/editTxtDate"
+        android:layout_below="@id/editTxtParticipant"
         android:text="Book"
         android:textColor="#F2F6F6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-
         android:layout_centerHorizontal="true"
         app:layout_constraintVertical_bias="0.0" />
 

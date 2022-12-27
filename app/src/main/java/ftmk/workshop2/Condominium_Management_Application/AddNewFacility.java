@@ -33,13 +33,14 @@ public class AddNewFacility extends AppCompatActivity {
     Button btnAdd;
     private EditText etName, etLocation, etCapacity;
     private String facilityName,location,capacity;
+    String url1 = "http://192.168.1.14/";
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_facility);
+        setContentView(R.layout.activity_add_facility);
 
         //Get all Id's
         etName = (EditText) findViewById(R.id.editTxtFName);
@@ -105,7 +106,7 @@ public class AddNewFacility extends AppCompatActivity {
     //Insert data into database
     public void InsertData(final String facilityName, final String location, final String capacity) {
         // url to post our data
-        String URL = "http://10.131.77.213/insert_facility.php";
+        String URL = url1+"insert_facility.php";
 
         // creating a new variable for our request queue
         RequestQueue queue = Volley.newRequestQueue(AddNewFacility.this);
@@ -155,52 +156,5 @@ public class AddNewFacility extends AppCompatActivity {
 
         queue.add(request);
 
-        /*class SendPostReqAsyncTask extends AsyncTask<String, Void, String>{
-
-            @Override
-            protected String doInBackground(String... params) {
-
-                String nameHolder = facilityName;
-                String locationHolder = location;
-                String capacityHolder = capacity;
-
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-
-                nameValuePairs.add(new BasicNameValuePair("FacilityName", nameHolder));
-                nameValuePairs.add(new BasicNameValuePair("Location", locationHolder));
-                nameValuePairs.add(new BasicNameValuePair("Capacity", capacityHolder));
-
-                try {
-                    HttpClient httpClient = new DefaultHttpClient();
-
-                    HttpPost httpPost = new HttpPost(URL);
-
-                    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-                    HttpResponse httpResponse = httpClient.execute(httpPost);
-
-                    HttpEntity httpEntity = httpResponse.getEntity();
-                }catch (ClientProtocolException e){
-
-                }catch (IOException e){
-
-                }
-                return "Data Inserted Successfully";
-            }
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-
-                Toast.makeText(AddNewFacility.this, "Data Submit Successfully",
-                        Toast.LENGTH_LONG).show();
-
-            }
-        }
-        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
-
-        sendPostReqAsyncTask.execute(facilityName, location, capacity);
-
-    }*/
     }
 }

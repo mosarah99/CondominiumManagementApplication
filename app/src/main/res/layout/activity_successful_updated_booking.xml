@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6EEF4"
-    tools:context=".Successful_Saved_Maintenance">
+    tools:context=".Successful_Updated_Booking">
 
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="46dp"
         android:layout_height="49dp"
         android:background="@drawable/back_button"
-        app:layout_constraintBottom_toTopOf="@+id/txtSaved"
+        app:layout_constraintBottom_toTopOf="@+id/txtUpdated"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +24,7 @@
         android:layout_width="50dp"
         android:layout_height="53dp"
         android:background="@drawable/home_button"
-        app:layout_constraintBottom_toTopOf="@+id/txtSaved"
+        app:layout_constraintBottom_toTopOf="@+id/txtUpdated"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.909"
         app:layout_constraintStart_toEndOf="@+id/btnBack"
@@ -33,15 +32,15 @@
         app:layout_constraintVertical_bias="0.406" />
 
     <TextView
-        android:id="@+id/txtSaved"
+        android:id="@+id/txtUpdated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
-        android:text="Saved !"
+        android:text="Updated !"
         android:textColor="#050505"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnViewMaintenanceList"
+        app:layout_constraintBottom_toTopOf="@+id/btnViewBookingList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -51,23 +50,23 @@
         android:id="@+id/back"
         android:layout_width="327dp"
         android:layout_height="212dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnViewMaintenanceList"
+        app:layout_constraintBottom_toTopOf="@+id/btnViewBookingList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSaved"
+        app:layout_constraintTop_toBottomOf="@+id/txtUpdated"
         app:layout_constraintVertical_bias="0.465"
         app:srcCompat="@drawable/white_column" />
 
     <TextView
-        android:id="@+id/txtSuccessSaved"
+        android:id="@+id/txtSuccessUpdated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
-        android:text="SAVED NEW MAINTENANCE"
+        android:text="UPDATED BOOKING INFO"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#090909"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/back"
         app:layout_constraintEnd_toEndOf="@+id/back"
@@ -79,7 +78,7 @@
         android:id="@+id/imgSuccess"
         android:layout_width="160dp"
         android:layout_height="347dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnViewMaintenanceList"
+        app:layout_constraintBottom_toTopOf="@+id/btnViewBookingList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,27 +88,28 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="437dp"
-        android:layout_height="700dp"
+        android:layout_width="434dp"
+        android:layout_height="707dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/txtSuccessSaved"
-        app:layout_constraintVertical_bias="0.098"
+        app:layout_constraintTop_toTopOf="@+id/txtSuccessUpdated"
+        app:layout_constraintVertical_bias="0.113"
         app:srcCompat="@drawable/building" />
 
     <Button
-        android:id="@+id/btnViewMaintenanceList"
+        android:id="@+id/btnViewBookingList"
         android:layout_width="214dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="208dp"
+        android:layout_marginBottom="212dp"
         android:background="@drawable/black_btn"
-        android:text="View Maintenance List"
+        android:text="View Booking List"
         android:textColor="#FDFCFC"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -125,7 +125,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnViewMaintenanceList"
+        app:layout_constraintTop_toBottomOf="@+id/btnViewBookingList"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

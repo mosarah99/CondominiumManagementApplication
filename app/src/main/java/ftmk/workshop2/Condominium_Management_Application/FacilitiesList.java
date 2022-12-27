@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -34,10 +35,12 @@ public class FacilitiesList extends AppCompatActivity {
     //Declare Button
     ImageButton btnBack;
 
+    SwipeRefreshLayout swipeRefreshLayout;
     ListView listView;
     FacilityAdapter facilityAdapter;
     public static ArrayList<Facility> facilityArrayList = new ArrayList<>();
-    String url = "http://10.131.77.213/get_facility.php";
+    String url1 = "http://192.168.1.14/";
+    String url = url1+"get_facility.php";
     Facility facility;
 
 
@@ -46,6 +49,7 @@ public class FacilitiesList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facilities_list);
 
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshLayout);
         listView = findViewById(R.id.facilityListView);
         facilityAdapter = new FacilityAdapter(this,facilityArrayList);
         listView.setAdapter(facilityAdapter);
@@ -70,7 +74,7 @@ public class FacilitiesList extends AppCompatActivity {
                                         .putExtra("position",position));
                                 break;
                             case 1:
-                                startActivity(new Intent(getApplicationContext(),EditFacilityInfo.class)
+                                startActivity(new Intent(getApplicationContext(), Edit_facility_info.class)
                                         .putExtra("position",position));
                                 break;
                             case 2:
@@ -89,9 +93,18 @@ public class FacilitiesList extends AppCompatActivity {
         //Get all Id's
         btnBack = (ImageButton) findViewById(R.id.btnBack);
 
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Intent intentBack = new Intent(FacilitiesList.this,
+                        FacilitiesList.class);
+                startActivity(intentBack);
+                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            }
+        });
+
 
         //Intent to Facilities Setting Menu
-        btnBack = (ImageButton) findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,11 +116,13 @@ public class FacilitiesList extends AppCompatActivity {
 
         getData();
 
+
     }
+
 
     private void deleteData(final String facilityID) {
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://10.131.77.213/delete_facility.php",
+        StringRequest request = new StringRequest(Request.Method.POST, url1+"delete_facility.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

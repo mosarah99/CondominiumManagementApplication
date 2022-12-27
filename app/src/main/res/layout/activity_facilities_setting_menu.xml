@@ -117,32 +117,20 @@
         android:scaleType="fitEnd"
         app:srcCompat="@drawable/building"
         tools:ignore="MissingConstraints" />
-    <!--<ImageView
-        android:id="@+id/building"
-        android:layout_width="435dp"
-        android:layout_height="759dp"
-        android:layout_marginTop="260dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEditBooking"
-        app:layout_constraintVertical_bias="0.462"
-        app:srcCompat="@drawable/building" />-->
 
     <TextView
         android:id="@+id/facilities_Menu"
         android:layout_width="215dp"
         android:layout_height="39dp"
+        android:layout_marginBottom="30dp"
         android:text="Facilities Setting"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/btnFacility"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433" />
+        app:layout_constraintVertical_bias="0.433"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

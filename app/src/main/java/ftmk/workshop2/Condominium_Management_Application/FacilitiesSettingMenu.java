@@ -42,16 +42,6 @@ public class FacilitiesSettingMenu extends AppCompatActivity {
             }
         });
 
-        /*//Intent to Facilities Booking Report
-        btnFacilitiesReport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentAdd = new Intent(FacilitiesSettingMenu.this,
-                        EditFacilityInfo.class);
-                startActivity(intentAdd);
-            }
-        });*/
-
 
     }
 }

@@ -8,28 +8,28 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SuccessfulUpdatedFacility extends AppCompatActivity {
+public class Successful_Updated_Booking extends AppCompatActivity {
 
     ImageButton btnBack, btnHome;
-    Button btnViewFList, btnDone;
+    Button btnViewBList, btnDone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_successfull_updated_facility);
+        setContentView(R.layout.activity_successful_updated_booking);
 
         //Get all Id's
         btnBack = (ImageButton) findViewById(R.id.btnBack);
         btnHome = (ImageButton) findViewById(R.id.btnHome);
-        btnViewFList = (Button) findViewById(R.id.btnViewFacilitiesList);
+        btnViewBList = (Button) findViewById(R.id.btnViewBookingList);
         btnDone = (Button) findViewById(R.id.btnDone);
 
-        //Intent to Edit Facility Info
+        //Intent to Edit Booking Info
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfulUpdatedFacility.this,
-                        Edit_facility_info.class);
+                Intent intentBack = new Intent(Successful_Updated_Booking.this,
+                        Edit_booking_info.class);
                 startActivity(intentBack);
             }
         });
@@ -38,28 +38,18 @@ public class SuccessfulUpdatedFacility extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfulUpdatedFacility.this,
+                Intent intentBack = new Intent(Successful_Updated_Booking.this,
                         FacilitiesSettingMenu.class);
                 startActivity(intentBack);
             }
         });
 
-        //Intent to Home Page
-        /*btnHome.setOnClickListener(new View.OnClickListener() {
+        //Intent to Booking List
+        btnViewBList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfulUpdatedFacility.this,
-                        FacilitiesSettingMenu.class);
-                startActivity(intentBack);
-            }
-        });*/
-
-        //Intent to Facilities List
-        btnViewFList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfulUpdatedFacility.this,
-                        FacilitiesList.class);
+                Intent intentBack = new Intent(Successful_Updated_Booking.this,
+                        BookingList.class);
                 startActivity(intentBack);
             }
         });

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6EEF4"
-    tools:context=".EditFacilityInfo">
+    tools:context=".Edit_facility_info">
 
     <ImageButton
         android:id="@+id/btnBack"

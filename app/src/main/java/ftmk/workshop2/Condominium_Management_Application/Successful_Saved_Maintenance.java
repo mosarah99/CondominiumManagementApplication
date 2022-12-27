@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SuccessfulSavedMaintenance extends AppCompatActivity {
+public class Successful_Saved_Maintenance extends AppCompatActivity {
 
     ImageButton btnBack, btnHome;
     Button btnViewMList, btnDone;
@@ -28,7 +28,7 @@ public class SuccessfulSavedMaintenance extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfulSavedMaintenance.this,
+                Intent intentBack = new Intent(Successful_Saved_Maintenance.this,
                         AddNewMaintenance.class);
                 startActivity(intentBack);
             }
@@ -38,7 +38,7 @@ public class SuccessfulSavedMaintenance extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfulSavedMaintenance.this,
+                Intent intentBack = new Intent(Successful_Saved_Maintenance.this,
                         FacilitiesSettingMenu.class);
                 startActivity(intentBack);
             }
@@ -48,7 +48,7 @@ public class SuccessfulSavedMaintenance extends AppCompatActivity {
         btnViewMList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfulSavedMaintenance.this,
+                Intent intentBack = new Intent(Successful_Saved_Maintenance.this,
                         MaintenanceList.class);
                 startActivity(intentBack);
             }

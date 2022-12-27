@@ -1,6 +1,5 @@
 package ftmk.workshop2.Condominium_Management_Application;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,32 +35,32 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddNewMaintenance extends AppCompatActivity {
+public class AddNewBooking extends AppCompatActivity {
 
     Spinner spinnerFacility, spinnerTime;
     ImageButton btnBack, btnEdit;
-    EditText edTxtDate;
-    Button btnSave;
+    EditText editBookingDate;
+    Button btnBook;
 
-    private String facilityName, maintenanceTime, maintenanceDate;
+    private String facilityName, bookingTime, bookingDate;
     private DatePickerDialog datePicker;
-    String url1 = "http://192.168.1.14/";
-
 
     ArrayList<String> facilityList = new ArrayList<>();
     ArrayAdapter<String> facilityAdapter;
     RequestQueue requestQueue;
-    @SuppressLint("ClickableViewAccessibility")
+    String url1 = "http://192.168.1.14/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_maintenance);
+        setContentView(R.layout.activity_add_booking);
 
+        //Get all Id's
+        btnBack = (ImageButton) findViewById(R.id.btnBack);
+        btnEdit = (ImageButton) findViewById(R.id.btnEditBooking);
+        editBookingDate = (EditText) findViewById(R.id.editBookingDate);
 
-        //Assign variable
-        edTxtDate = (EditText) findViewById(R.id.editTxtDate);
-
-        edTxtDate.setOnTouchListener(new View.OnTouchListener() {
+        editBookingDate.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if(motionEvent.getAction() == MotionEvent.ACTION_UP){
@@ -77,12 +76,12 @@ public class AddNewMaintenance extends AppCompatActivity {
                     int year = cldr.get(Calendar.YEAR);
 
                     // date picker dialog
-                    datePicker = new DatePickerDialog(AddNewMaintenance.this,
+                    datePicker = new DatePickerDialog(AddNewBooking.this,
                             new DatePickerDialog.OnDateSetListener() {
                                 @Override
                                 public void onDateSet(DatePicker view, int year, int monthOfYear,
                                                       int dayOfMonth) {
-                                    edTxtDate.setText(year  + "-" + (monthOfYear + 1)
+                                    editBookingDate.setText(year  + "-" + (monthOfYear + 1)
                                             + "-" + dayOfMonth);
                                 }
                             }, year,month, day);
@@ -93,35 +92,30 @@ public class AddNewMaintenance extends AppCompatActivity {
             }
         });
 
-        //Get all Id's
-        btnBack = (ImageButton) findViewById(R.id.btnBack);
-        btnEdit = (ImageButton) findViewById(R.id.btnEditMaintenance);
 
         //Intent to Facilities Setting Menu
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(AddNewMaintenance.this,
-                        FacilitiesSettingMenu.class);
+                Intent intentBack = new Intent(AddNewBooking.this,
+                        FacilityBookingMenu.class);
                 startActivity(intentBack);
             }
         });
 
-        //Intent to Edit Maintenance
+        //Intent to Booking List
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(AddNewMaintenance.this,
-                        MaintenanceList.class);
+                Intent intentBack = new Intent(AddNewBooking.this,
+                        BookingList.class);
                 startActivity(intentBack);
             }
         });
 
-
-
         requestQueue = Volley.newRequestQueue(this);
         spinnerFacility = findViewById(R.id.spinnerFacility);
-        String url = url1+"populate_facility.php";
+        String url = url1 + "populate_facility.php";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
                 url, null, new Response.Listener<JSONObject>() {
             @Override
@@ -132,7 +126,7 @@ public class AddNewMaintenance extends AppCompatActivity {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         String facilityName = jsonObject.optString("FacilityName");
                         facilityList.add(facilityName);
-                        facilityAdapter = new ArrayAdapter<>(AddNewMaintenance.this,
+                        facilityAdapter = new ArrayAdapter<>(AddNewBooking.this,
                                 android.R.layout.simple_spinner_item, facilityList);
                         facilityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinnerFacility.setAdapter(facilityAdapter);
@@ -150,51 +144,45 @@ public class AddNewMaintenance extends AppCompatActivity {
         });
         requestQueue.add(jsonObjectRequest);
 
-
-        btnSave = (Button) findViewById(R.id.btnSave);
-        btnSave.setOnClickListener(new View.OnClickListener() {
+        btnBook = (Button) findViewById(R.id.btnBook);
+        btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                getMaintenance();
-
-
+                getBooking();
             }
         });
 
-
-
     }
 
-    private void getMaintenance() {
+    private void getBooking() {
 
         spinnerFacility = (Spinner) findViewById(R.id.spinnerFacility);
         spinnerTime = (Spinner) findViewById(R.id.spinnerTime);
-        edTxtDate = (EditText) findViewById(R.id.editTxtDate);
+        editBookingDate = (EditText) findViewById(R.id.editBookingDate);
         facilityName = spinnerFacility.getSelectedItem().toString().trim();
-        maintenanceTime = spinnerTime.getSelectedItem().toString().trim();
-        maintenanceDate = edTxtDate.getText().toString().trim();
+        bookingTime = spinnerTime.getSelectedItem().toString().trim();
+        bookingDate = editBookingDate.getText().toString().trim();
 
-        if(TextUtils.isEmpty(maintenanceDate)){
-            edTxtDate.setError("Please select maintenance date.");
+        if(TextUtils.isEmpty(bookingDate)){
+            editBookingDate.setError("Please select booking date.");
         }
         else {
-            addMaintenance(facilityName,maintenanceTime,maintenanceDate);
-            Intent intentBack = new Intent(AddNewMaintenance.this,
-                    Successful_Saved_Maintenance.class);
+            addBooking(facilityName,bookingTime,bookingDate);
+            Intent intentBack = new Intent(AddNewBooking.this,
+                    Successful_Booked_Facility.class);
             startActivity(intentBack);
 
         }
-
     }
 
-    private void addMaintenance(String facilityName, String maintenanceTime, String maintenanceDate)
-    {
+    private void addBooking(String facilityName, String bookingTime, String bookingDate) {
+
         // url to post our data
-        String url = url1+"insert_maintenance.php";
+        String url = url1+"insert_booking.php";
 
         // creating a new variable for our request queue
-        RequestQueue queue = Volley.newRequestQueue(AddNewMaintenance.this);
+        RequestQueue queue = Volley.newRequestQueue(AddNewBooking.this);
 
         // on below line we are calling a string
         // request method to post the data to our API
@@ -206,7 +194,7 @@ public class AddNewMaintenance extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     // on below line we are displaying a success toast message.
-                    Toast.makeText(AddNewMaintenance.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddNewBooking.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -215,7 +203,7 @@ public class AddNewMaintenance extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // method to handle errors.
-                Toast.makeText(AddNewMaintenance.this, "Fail to get response = " + error,
+                Toast.makeText(AddNewBooking.this, "Fail to get response = " + error,
                         Toast.LENGTH_SHORT).show();
             }
         }){
@@ -228,13 +216,14 @@ public class AddNewMaintenance extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
 
                 params.put("facilityName", facilityName);
-                params.put("maintenanceTime", maintenanceTime);
-                params.put("maintenanceDate", maintenanceDate);
+                params.put("bookingTime", bookingTime);
+                params.put("bookingDate", bookingDate);
 
                 return params;
             }
         };
         queue.add(request);
     }
+
 
 }

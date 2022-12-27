@@ -25,7 +25,7 @@ public class FacilityBookingMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intentAdd = new Intent(FacilityBookingMenu.this,
-                        NewBooking.class);
+                        AddNewBooking.class);
                 startActivity(intentAdd);
             }
         });
