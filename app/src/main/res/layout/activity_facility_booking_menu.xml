@@ -35,7 +35,7 @@
         android:textSize="16sp"
 
         app:iconTint="#EC9595"
-        app:layout_constraintBottom_toTopOf="@+id/btnEditBooking"
+        app:layout_constraintBottom_toTopOf="@+id/btnViewBooking"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,43 +43,25 @@
         app:layout_constraintVertical_bias="0.846"
         app:rippleColor="#EC9595" />
 
-    <Button
-        android:id="@+id/btnCancelBooking"
-        android:layout_width="266dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="280dp"
-        android:background="@drawable/light_blue_btn"
-        android:fontFamily="@font/alata"
-        android:text="CANCEL BOOKING"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:iconTint="#EC9595"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/btnEditBooking"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnEditBooking"
-        app:rippleColor="#EC9595" />
 
     <Button
-        android:id="@+id/btnEditBooking"
+        android:id="@+id/btnViewBooking"
         android:layout_width="266dp"
         android:layout_height="80dp"
+        android:layout_marginTop="324dp"
         android:background="@drawable/light_blue_btn"
         android:fontFamily="@font/alata"
-        android:text="EDIT BOOKING"
+        android:text="VIEW BOOKING LIST"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#000000"
         android:textSize="16sp"
+
         app:iconTint="#EC9595"
-        app:layout_constraintBottom_toTopOf="@+id/btnCancelBooking"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865"
         app:rippleColor="#EC9595" />
 
     <TextView
@@ -87,6 +69,7 @@
         android:layout_width="215dp"
         android:layout_height="39dp"
         android:text="Facilities Menu"
+        android:layout_marginBottom="10dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -98,15 +81,20 @@
         app:layout_constraintVertical_bias="0.433" />
 
     <ImageView
-        android:id="@+id/building"
-        android:layout_width="435dp"
-        android:layout_height="759dp"
-        android:layout_marginTop="260dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEditBooking"
-        app:layout_constraintVertical_bias="0.519"
-        app:srcCompat="@drawable/building" />
+        android:id="@+id/imageView2"
+        android:layout_width="412dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginBottom="1dp"
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/building"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
