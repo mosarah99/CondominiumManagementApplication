@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6EEF4"
-    tools:context=".FacilitiesList">
+    tools:context=".MaintenanceList">
 
     <ImageButton
         android:id="@+id/btnBack"
@@ -16,7 +16,7 @@
         android:layout_centerInParent="false"
         android:layout_marginTop="38dp"
         android:layout_marginRight="7dp"
-        android:layout_toLeftOf="@id/editFacilityInfo"
+        android:layout_toLeftOf="@id/tvMaintenanceList"
         android:background="@drawable/back_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
@@ -24,15 +24,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:layout_below="@id/tvMaintenanceList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please choose the facility at below for view, edit or delete."
-        android:layout_below="@id/editFacilityInfo"
+        android:text="Please choose the maintenance at below for view, edit or delete."
         android:layout_centerHorizontal="true"
+        android:textAlignment="center"
         android:layout_marginTop="5dp"
         android:textColor="@color/black"/>
     <TextView
-        android:id="@+id/editFacilityInfo"
+        android:id="@+id/tvMaintenanceList"
         android:layout_width="297dp"
         android:layout_height="47dp"
         android:layout_alignParentTop="true"
@@ -40,7 +41,7 @@
         android:paddingTop="5dp"
         android:layout_marginTop="41dp"
         android:layout_marginEnd="34dp"
-        android:text="Facilities List"
+        android:text="Maintenance List"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -66,26 +67,26 @@
         app:srcCompat="@drawable/building" />
 
     <ListView
-        android:id="@+id/facilityListView"
+        android:id="@+id/maintenanceListView"
         android:layout_width="302dp"
         android:layout_height="470dp"
-        android:layout_below="@id/editFacilityInfo"
+        android:layout_below="@id/tvMaintenanceList"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="50dp"
-
         android:layout_marginBottom="138dp"
         android:background="@drawable/white_column"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editFacilityInfo"
+        app:layout_constraintTop_toBottomOf="@+id/tvMaintenanceList"
         app:layout_constraintVertical_bias="0.464" />
 
-</RelativeLayout>
 
+
+</RelativeLayout>

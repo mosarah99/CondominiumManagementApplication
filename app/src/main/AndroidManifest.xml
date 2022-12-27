@@ -17,14 +17,42 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".SuccessfullSavedMaintenance"
+            android:name=".Successful_Updated_Maintenance"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".FacilityMaintenance"
+            android:name=".Edit_maintenance_info"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".DetailMaintenance"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MaintenanceList"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".SuccessfulSavedMaintenance"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AddNewMaintenance"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -59,7 +87,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".SuccessfullUpdatedFacility"
+            android:name=".SuccessfulUpdatedFacility"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -73,7 +101,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".SuccessfullAddedFacility"
+            android:name=".SuccessfulAddedFacility"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

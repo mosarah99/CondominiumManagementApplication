@@ -8,7 +8,7 @@ import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SuccessfullSavedMaintenance extends AppCompatActivity {
+public class Successful_Updated_Maintenance extends AppCompatActivity {
 
     ImageButton btnBack, btnHome;
     Button btnViewMList, btnDone;
@@ -16,7 +16,7 @@ public class SuccessfullSavedMaintenance extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_successfull_saved_maintenance);
+        setContentView(R.layout.activity_successful_updated_maintenance);
 
         //Get all Id's
         btnBack = (ImageButton) findViewById(R.id.btnBack);
@@ -24,22 +24,32 @@ public class SuccessfullSavedMaintenance extends AppCompatActivity {
         btnViewMList = (Button) findViewById(R.id.btnViewMaintenanceList);
         btnDone = (Button) findViewById(R.id.btnDone);
 
-        //Intent to Add Maintenance
+        //Intent to Edit Maintenance Info
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfullSavedMaintenance.this,
-                        FacilityMaintenance.class);
+                Intent intentBack = new Intent(Successful_Updated_Maintenance.this,
+                        Edit_maintenance_info.class);
                 startActivity(intentBack);
             }
         });
 
-        //Intent to Facility Setting Menu
+        //Intent to Facility Menu
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfullSavedMaintenance.this,
+                Intent intentBack = new Intent(Successful_Updated_Maintenance.this,
                         FacilitiesSettingMenu.class);
+                startActivity(intentBack);
+            }
+        });
+
+        //Intent to Maintenance List
+        btnViewMList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentBack = new Intent(Successful_Updated_Maintenance.this,
+                        MaintenanceList.class);
                 startActivity(intentBack);
             }
         });

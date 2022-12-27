@@ -25,11 +25,9 @@ import java.util.Map;
 public class EditFacilityInfo extends AppCompatActivity {
 
     ImageButton btnBack;
-    //Button btnUpdate;
     EditText etID, etName, etLocation, etCapacity;
 
     private int position;
-    /*private String facilityName, location, capacity;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +36,6 @@ public class EditFacilityInfo extends AppCompatActivity {
 
         //Get all Id's
         btnBack = (ImageButton) findViewById(R.id.btnBack);
-        //btnUpdate = (Button) findViewById(R.id.btnUpdate);
 
         etID = (EditText) findViewById(R.id.editTxtFID);
         etName = (EditText) findViewById(R.id.editTxtFName);
@@ -64,37 +61,8 @@ public class EditFacilityInfo extends AppCompatActivity {
             }
         });
 
-        //Intent to Successful Added Facilities Screen
-        /*btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UpdateFacility();
-            }
-        });*/
-
     }
 
-    /*public void UpdateFacility(){
-
-        facilityName = etName.getText().toString().trim();
-        location = etLocation.getText().toString().trim();
-        capacity = etCapacity.getText().toString().trim();
-
-        // Give a warning to user when the field is empty
-        if(TextUtils.isEmpty(facilityName)){
-            etName.setError("Please enter Facility Name");
-        }else if (TextUtils.isEmpty(location)){
-            etLocation.setError("Please enter Location");
-        }else if (TextUtils.isEmpty(capacity)){
-            etCapacity.setError("Please enter Capacity");
-        }else {
-            //UpdateData(facilityName, location, capacity);
-            //Intent to Successful Added Facilities Screen
-            Intent intentSuccess = new Intent(EditFacilityInfo.this,
-                    SuccessfullUpdatedFacility.class);
-            startActivity(intentSuccess);
-        }
-    }*/
 
     public void fnUpdate(View view){
         final String facilityName = etName.getText().toString().trim();
@@ -113,7 +81,7 @@ public class EditFacilityInfo extends AppCompatActivity {
             //UpdateData(facilityName, location, capacity);
             //Intent to Successful Added Facilities Screen
             Intent intentSuccess = new Intent(EditFacilityInfo.this,
-                    SuccessfullUpdatedFacility.class);
+                    SuccessfulUpdatedFacility.class);
             startActivity(intentSuccess);
         }
 
@@ -122,7 +90,7 @@ public class EditFacilityInfo extends AppCompatActivity {
         progressDialog.setMessage("Updating....");
         progressDialog.show();
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.1.9/update_facility.php",
+        StringRequest request = new StringRequest(Request.Method.POST, "http://10.131.77.213/update_facility.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

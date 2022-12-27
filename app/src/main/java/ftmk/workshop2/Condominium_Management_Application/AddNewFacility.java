@@ -29,7 +29,7 @@ import java.util.Map;
 public class AddNewFacility extends AppCompatActivity {
 
     //Declare EditText & Button
-    ImageButton btnBack;
+    ImageButton btnBack, btnEditFacility;
     Button btnAdd;
     private EditText etName, etLocation, etCapacity;
     private String facilityName,location,capacity;
@@ -47,6 +47,7 @@ public class AddNewFacility extends AppCompatActivity {
         etCapacity = (EditText) findViewById(R.id.editTxtFCapacity);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnBack = (ImageButton) findViewById(R.id.btnBack);
+        btnEditFacility = (ImageButton) findViewById(R.id.btnEditFacility);
 
         //Intent to Facilities Setting Menu
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +55,16 @@ public class AddNewFacility extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentBack = new Intent(AddNewFacility.this,
                         FacilitiesSettingMenu.class);
+                startActivity(intentBack);
+            }
+        });
+
+        //Intent to Edit Facility Info
+        btnEditFacility.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentBack = new Intent(AddNewFacility.this,
+                        FacilitiesList.class);
                 startActivity(intentBack);
             }
         });
@@ -86,7 +97,7 @@ public class AddNewFacility extends AppCompatActivity {
                 InsertData(facilityName, location, capacity);
                 //Intent to Successful Added Facilities Screen
                 Intent intentSuccess = new Intent(AddNewFacility.this,
-                        SuccessfullAddedFacility.class);
+                        SuccessfulAddedFacility.class);
                 startActivity(intentSuccess);
             }
     }
@@ -94,7 +105,7 @@ public class AddNewFacility extends AppCompatActivity {
     //Insert data into database
     public void InsertData(final String facilityName, final String location, final String capacity) {
         // url to post our data
-        String URL = "http://192.168.1.14/insert_facility.php";
+        String URL = "http://10.131.77.213/insert_facility.php";
 
         // creating a new variable for our request queue
         RequestQueue queue = Volley.newRequestQueue(AddNewFacility.this);

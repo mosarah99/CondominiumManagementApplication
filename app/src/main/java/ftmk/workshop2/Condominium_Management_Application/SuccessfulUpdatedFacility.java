@@ -1,24 +1,22 @@
 package ftmk.workshop2.Condominium_Management_Application;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class SuccessfullAddedFacility extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SuccessfulUpdatedFacility extends AppCompatActivity {
 
     ImageButton btnBack, btnHome;
     Button btnViewFList, btnDone;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_successfull_added_facility);
+        setContentView(R.layout.activity_successfull_updated_facility);
 
         //Get all Id's
         btnBack = (ImageButton) findViewById(R.id.btnBack);
@@ -26,12 +24,12 @@ public class SuccessfullAddedFacility extends AppCompatActivity {
         btnViewFList = (Button) findViewById(R.id.btnViewFacilitiesList);
         btnDone = (Button) findViewById(R.id.btnDone);
 
-        //Intent to Add Facility
+        //Intent to Edit Facility Info
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfullAddedFacility.this,
-                        AddNewFacility.class);
+                Intent intentBack = new Intent(SuccessfulUpdatedFacility.this,
+                        EditFacilityInfo.class);
                 startActivity(intentBack);
             }
         });
@@ -40,7 +38,7 @@ public class SuccessfullAddedFacility extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfullAddedFacility.this,
+                Intent intentBack = new Intent(SuccessfulUpdatedFacility.this,
                         FacilitiesSettingMenu.class);
                 startActivity(intentBack);
             }
@@ -50,7 +48,7 @@ public class SuccessfullAddedFacility extends AppCompatActivity {
         /*btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfullAddedFacility.this,
+                Intent intentBack = new Intent(SuccessfulUpdatedFacility.this,
                         FacilitiesSettingMenu.class);
                 startActivity(intentBack);
             }
@@ -60,11 +58,10 @@ public class SuccessfullAddedFacility extends AppCompatActivity {
         btnViewFList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(SuccessfullAddedFacility.this,
+                Intent intentBack = new Intent(SuccessfulUpdatedFacility.this,
                         FacilitiesList.class);
                 startActivity(intentBack);
             }
         });
-
     }
 }

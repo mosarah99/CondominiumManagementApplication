@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6EEF4"
-    tools:context=".SuccessfulUpdatedFacility">
+    tools:context=".Successful_Updated_Maintenance">
 
     <ImageButton
         android:id="@+id/btnBack"
@@ -40,7 +40,7 @@
         android:textColor="#050505"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnViewFacilitiesList"
+        app:layout_constraintBottom_toTopOf="@+id/btnViewMaintenanceList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -50,7 +50,7 @@
         android:id="@+id/back"
         android:layout_width="327dp"
         android:layout_height="212dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnViewFacilitiesList"
+        app:layout_constraintBottom_toTopOf="@+id/btnViewMaintenanceList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtUpdated"
@@ -62,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="monospace"
-        android:text="UPDATED FACILITY INFORMATION"
+        android:text="UPDATED MAINTENANCE INFO"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#090909"
@@ -78,7 +78,7 @@
         android:id="@+id/imgSuccess"
         android:layout_width="160dp"
         android:layout_height="347dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnViewFacilitiesList"
+        app:layout_constraintBottom_toTopOf="@+id/btnViewMaintenanceList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,12 +99,12 @@
         app:srcCompat="@drawable/building" />
 
     <Button
-        android:id="@+id/btnViewFacilitiesList"
+        android:id="@+id/btnViewMaintenanceList"
         android:layout_width="214dp"
         android:layout_height="50dp"
         android:layout_marginBottom="212dp"
         android:background="@drawable/black_btn"
-        android:text="View Facilities List"
+        android:text="View Maintenance List"
         android:textColor="#FDFCFC"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -125,7 +125,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnViewFacilitiesList"
+        app:layout_constraintTop_toBottomOf="@+id/btnViewMaintenanceList"
         app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

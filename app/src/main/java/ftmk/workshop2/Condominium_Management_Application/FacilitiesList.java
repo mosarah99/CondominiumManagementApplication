@@ -33,12 +33,11 @@ public class FacilitiesList extends AppCompatActivity {
 
     //Declare Button
     ImageButton btnBack;
-    //Button btnEdit;
 
     ListView listView;
     FacilityAdapter facilityAdapter;
     public static ArrayList<Facility> facilityArrayList = new ArrayList<>();
-    String url = "http://192.168.1.9/get.php";
+    String url = "http://10.131.77.213/get_facility.php";
     Facility facility;
 
 
@@ -108,7 +107,7 @@ public class FacilitiesList extends AppCompatActivity {
 
     private void deleteData(final String facilityID) {
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.1.9/delete_facility.php",
+        StringRequest request = new StringRequest(Request.Method.POST, "http://10.131.77.213/delete_facility.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

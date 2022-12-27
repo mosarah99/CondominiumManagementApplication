@@ -2,10 +2,10 @@ package ftmk.workshop2.Condominium_Management_Application;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -36,31 +37,35 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FacilityMaintenance extends AppCompatActivity {
+public class Edit_maintenance_info extends AppCompatActivity {
 
     Spinner spinnerFacility, spinnerTime;
     ImageButton btnBack;
-    EditText edTxtDate;
-    Button btnSave;
+    EditText edTxtDate, etID;
+    Button btnUpdate;
 
-    private String facilityName, maintenanceTime, maintenanceDate;
     private DatePickerDialog datePicker;
-
-
     ArrayList<String> facilityList = new ArrayList<>();
     ArrayAdapter<String> facilityAdapter;
     RequestQueue requestQueue;
-    @SuppressLint("ClickableViewAccessibility")
+
+    private int position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_facility_maintenance);
+        setContentView(R.layout.activity_edit_maintenance_info);
 
-
-        //Assign variable
+        //Get all Id's
+        btnBack = (ImageButton) findViewById(R.id.btnBack);
+        spinnerFacility = (Spinner) findViewById(R.id.spinnerFacility);
+        spinnerTime = (Spinner) findViewById(R.id.spinnerTime);
         edTxtDate = (EditText) findViewById(R.id.editTxtDate);
+        etID = (EditText) findViewById(R.id.editTxtMID);
+        btnUpdate = (Button) findViewById(R.id.btnUpdate);
 
         edTxtDate.setOnTouchListener(new View.OnTouchListener() {
+            @SuppressLint("ClickableViewAccessibility")
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if(motionEvent.getAction() == MotionEvent.ACTION_UP){
@@ -76,7 +81,7 @@ public class FacilityMaintenance extends AppCompatActivity {
                     int year = cldr.get(Calendar.YEAR);
 
                     // date picker dialog
-                    datePicker = new DatePickerDialog(FacilityMaintenance.this,
+                    datePicker = new DatePickerDialog(Edit_maintenance_info.this,
                             new DatePickerDialog.OnDateSetListener() {
                                 @Override
                                 public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -92,15 +97,20 @@ public class FacilityMaintenance extends AppCompatActivity {
             }
         });
 
-        //Get all Id's
-        btnBack = (ImageButton) findViewById(R.id.btnBack);
+        Intent intent = getIntent();
+        position = intent.getExtras().getInt("position");
 
-        //Intent to Facilities Setting Menu
+        etID.setText(MaintenanceList.maintenanceArrayList.get(position).getMaintenanceID());
+        spinnerFacility.setPrompt(MaintenanceList.maintenanceArrayList.get(position).getFacilityName());
+        spinnerTime.setPrompt(MaintenanceList.maintenanceArrayList.get(position).getMaintenanceTime());
+        edTxtDate.setText(MaintenanceList.maintenanceArrayList.get(position).getMaintenanceDate());
+
+        //Intent to Maintenance List
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(FacilityMaintenance.this,
-                        FacilitiesSettingMenu.class);
+                Intent intentBack = new Intent(Edit_maintenance_info.this,
+                        MaintenanceList.class);
                 startActivity(intentBack);
             }
         });
@@ -118,7 +128,7 @@ public class FacilityMaintenance extends AppCompatActivity {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         String facilityName = jsonObject.optString("FacilityName");
                         facilityList.add(facilityName);
-                        facilityAdapter = new ArrayAdapter<>(FacilityMaintenance.this,
+                        facilityAdapter = new ArrayAdapter<>(Edit_maintenance_info.this,
                                 android.R.layout.simple_spinner_item, facilityList);
                         facilityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         spinnerFacility.setAdapter(facilityAdapter);
@@ -135,84 +145,53 @@ public class FacilityMaintenance extends AppCompatActivity {
             }
         });
         requestQueue.add(jsonObjectRequest);
-
-
-        btnSave = (Button) findViewById(R.id.btnSave);
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                getMaintenance();
-
-
-            }
-        });
-
-
-
     }
 
-    private void getMaintenance() {
+    public void fnUpdateMaintenance(View view) {
+        final String facilityName = spinnerFacility.getSelectedItem().toString().trim();
+        final String maintenanceTime = spinnerTime.getSelectedItem().toString().trim();
+        final String maintenanceDate = edTxtDate.getText().toString().trim();
+        final String maintenanceID = etID.getText().toString().trim();
 
-        spinnerFacility = (Spinner) findViewById(R.id.spinnerFacility);
-        spinnerTime = (Spinner) findViewById(R.id.spinnerTime);
-        edTxtDate = (EditText) findViewById(R.id.editTxtDate);
-        facilityName = spinnerFacility.getSelectedItem().toString().trim();
-        maintenanceTime = spinnerTime.getSelectedItem().toString().trim();
-        maintenanceDate = edTxtDate.getText().toString().trim();
+        // Give a warning to user when the field is empty
+        if (TextUtils.isEmpty(facilityName)) {
+            edTxtDate.setError("Please enter maintenance Date");
+        } else {
 
-        if(TextUtils.isEmpty(maintenanceDate)){
-            edTxtDate.setError("Please select maintenance date.");
-        }
-        else {
-            addMaintenance(facilityName,maintenanceTime,maintenanceDate);
-            Intent intentBack = new Intent(FacilityMaintenance.this,
-                    SuccessfullSavedMaintenance.class);
-            startActivity(intentBack);
-
+            //Intent to Successful Added Maintenance Screen
+            Intent intentSuccess = new Intent(Edit_maintenance_info.this,
+                    Successful_Updated_Maintenance.class);
+            startActivity(intentSuccess);
         }
 
-    }
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Updating....");
+        progressDialog.show();
 
-    private void addMaintenance(String facilityName, String maintenanceTime, String maintenanceDate)
-    {
-        // url to post our data
-        String url = "http://192.168.1.14/insert_maintenance.php";
+        StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.1.14/update_maintenance.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
 
-        // creating a new variable for our request queue
-        RequestQueue queue = Volley.newRequestQueue(FacilityMaintenance.this);
-
-        // on below line we are calling a string
-        // request method to post the data to our API
-        // in this we are calling a post method.
-        StringRequest request = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.e("TAG", "RESPONSE IS " + response);
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    // on below line we are displaying a success toast message.
-                    Toast.makeText(FacilityMaintenance.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
+                        Toast.makeText(Edit_maintenance_info.this, response,Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(),MaintenanceList.class));
+                        finish();
+                        progressDialog.dismiss();
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                // method to handle errors.
-                Toast.makeText(FacilityMaintenance.this, "Fail to get response = " + error,
-                        Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(Edit_maintenance_info.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
             }
         }){
             @Override
-            public String getBodyContentType() {
-                return "application/x-www-form-urlencoded; charset=UTF-8";
-            }
-            @Override
-            protected Map<String, String> getParams() {
+            protected Map<String, String> getParams() throws AuthFailureError {
+
                 Map<String, String> params = new HashMap<String, String>();
 
+                params.put("maintenanceID", maintenanceID);
                 params.put("facilityName", facilityName);
                 params.put("maintenanceTime", maintenanceTime);
                 params.put("maintenanceDate", maintenanceDate);
@@ -220,7 +199,12 @@ public class FacilityMaintenance extends AppCompatActivity {
                 return params;
             }
         };
-        queue.add(request);
+        RequestQueue requestQueue = Volley.newRequestQueue(Edit_maintenance_info.this);
+        requestQueue.add(request);
     }
 
+
+
+    //Update maintenance to database
+    //make calendar in edtDate
 }
