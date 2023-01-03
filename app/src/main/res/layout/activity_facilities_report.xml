@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="#E6EEF4"
+    tools:context=".Facilities_Report">
+
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="47dp"
+        android:layout_height="81dp"
+        android:layout_above="@id/scroll"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="false"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toLeftOf="@id/detailFacility"
+        android:background="@drawable/back_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    />
+
+
+
+    <TextView
+        android:id="@+id/detailFacility"
+        android:layout_width="297dp"
+        android:layout_height="47dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="18dp"
+
+        android:text="Facilities Booking Report"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--<EditText
+        android:id="@+id/editSearchFacility"
+        android:layout_width="277dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailFacility"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/white_column"
+        android:hint="Search Facility Name"
+        android:padding="10dp" />
+
+    <ImageButton
+    android:id="@+id/btn_search"
+    android:layout_width="41dp"
+    android:layout_height="39dp"
+    android:layout_below="@id/detailFacility"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_toRightOf="@id/editSearchFacility"
+    android:background="@drawable/ic_baseline_search_24"
+    android:padding="15dp"
+    android:textColor="#FFFFFF" />-->
+
+
+    <!--<TextView
+        android:layout_height="wrap_content"
+        android:layout_width="359dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/white_column"
+        android:layout_below="@id/txtid"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:text="Facility Name:"
+        android:textSize="20sp"
+        android:id="@+id/txtName"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="359dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/white_column"
+        android:layout_below="@id/txtName"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:text="Location:"
+        android:textSize="20sp"
+        android:id="@+id/txtLocation"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="359dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/white_column"
+        android:layout_below="@+id/txtLocation"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:text="Capacity:"
+        android:textSize="20sp"
+        android:id="@+id/txtCapacity"
+        android:layout_marginBottom="10dp"
+        />-->
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="345dp"
+        android:layout_height="465dp"
+        android:layout_below="@id/detailFacility"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/txtReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailFacility"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/white_column"
+            android:text="Facilities Booking Report"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="412dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitEnd"
+        app:srcCompat="@drawable/building" />
+</RelativeLayout>
