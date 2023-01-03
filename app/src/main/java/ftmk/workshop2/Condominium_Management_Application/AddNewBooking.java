@@ -45,10 +45,16 @@ public class AddNewBooking extends AppCompatActivity {
     private String facilityName, bookingTime, bookingDate;
     private DatePickerDialog datePicker;
 
+    MaintenanceAdapter maintenanceAdapter;
+    public static ArrayList<Maintenance> maintenanceArrayList = new ArrayList<>();
+    Maintenance maintenance;
+
     ArrayList<String> facilityList = new ArrayList<>();
     ArrayAdapter<String> facilityAdapter;
     RequestQueue requestQueue;
+    //String url1 = "http://10.131.77.213/";
     String url1 = "http://192.168.1.14/";
+    //String url1 = "http://192.168.0.8/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +75,9 @@ public class AddNewBooking extends AppCompatActivity {
 
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                     String date = simpleDateFormat.format(cldr.getTime());
+
+
+
 
                     //Get day, month, year
                     int day = cldr.get(Calendar.DAY_OF_MONTH);
@@ -224,6 +233,54 @@ public class AddNewBooking extends AppCompatActivity {
         };
         queue.add(request);
     }
+
+    /*public void getMaintenanceDate() {
+
+        StringRequest request = new StringRequest(Request.Method.POST, url1 + "get_maintenance_date.php",
+                new Response.Listener<String>() {
+
+                    @Override
+                    public void onResponse(String response) {
+
+                        maintenanceArrayList.clear();
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("item");
+
+                            if (success.equals("1")) {
+
+                                for (int i = 0; i < jsonArray.length(); i++) {
+
+                                    JSONObject object = jsonArray.getJSONObject(i);
+
+                                    String MaintenanceID = object.getString("maintenanceID");
+                                    String FacilityName = object.getString("facilityName");
+                                    String MaintenanceTime = object.getString("maintenanceTime");
+                                    String MaintenanceDate = object.getString("maintenanceDate");
+
+                                    maintenance = new Maintenance(MaintenanceID, FacilityName, MaintenanceTime,MaintenanceDate);
+                                    maintenanceArrayList.add(maintenance);
+                                    maintenanceAdapter.notifyDataSetChanged();
+
+                                    String date = object.getString("maintenanceDate");
+                                }
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(AddNewBooking.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(request);
+    }*/
 
 
 }

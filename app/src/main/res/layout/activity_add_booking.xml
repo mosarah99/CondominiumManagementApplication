@@ -161,45 +161,7 @@
         tools:layout_editor_absoluteX="59dp"
         tools:layout_editor_absoluteY="166dp" />
 
-    <TextView
-        android:id="@+id/txtParticipant"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editBookingDate"
-        android:layout_marginStart="55dp"
-        android:layout_marginLeft="55dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="Max. participant"
-        android:textColor="#050505"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.153"
-        app:layout_constraintStart_toStartOf="parent" />
 
-
-
-    <EditText
-        android:id="@+id/editTxtParticipant"
-        android:layout_width="310dp"
-        android:layout_height="50dp"
-        android:background="@drawable/white_column"
-        android:elevation="10dp"
-        android:ems="10"
-        android:hint="Number of participant "
-        android:inputType="numberDecimal"
-        android:enabled="false"
-        android:padding="10dp"
-        android:textSize="16sp"
-        android:layout_below="@id/txtParticipant"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.138" />
 
     <Button
         android:id="@+id/btnBook"
@@ -208,7 +170,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="97dp"
         android:background="@drawable/black_btn"
-        android:layout_below="@id/editTxtParticipant"
+        android:layout_below="@id/editBookingDate"
         android:text="Book"
         android:textColor="#F2F6F6"
         app:layout_constraintBottom_toBottomOf="parent"

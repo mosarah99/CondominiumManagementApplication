@@ -1,12 +1,15 @@
 package ftmk.workshop2.Condominium_Management_Application;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -39,9 +42,12 @@ public class MaintenanceList extends AppCompatActivity {
     ListView listView;
     MaintenanceAdapter maintenanceAdapter;
     public static ArrayList<Maintenance> maintenanceArrayList = new ArrayList<>();
-    String url1 = "http://192.168.1.14/";
-    String url = url1+"get_maintenance.php";
     Maintenance maintenance;
+    //String url1 = "http://10.131.77.213/";
+    String url1 = "http://192.168.1.14/";
+    //String url1 = "http://192.168.0.8/";
+    String url = url1+"get_maintenance.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +68,35 @@ public class MaintenanceList extends AppCompatActivity {
 
                 CharSequence[] dialogItem = {"View Data", "Edit Data", "Delete Data"};
                 builder.setTitle(maintenanceArrayList.get(position).getFacilityName());
+
+
+
+
+
                 builder.setItems(dialogItem, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
+                        Dialog customDialog;
+                        customDialog = new Dialog(MaintenanceList.this);
+                        customDialog.setContentView(R.layout.custom_dialog);
+                        customDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                        customDialog.setCancelable(false);
+                        customDialog.getWindow().getAttributes().windowAnimations = androidx.appcompat.R.style.Animation_AppCompat_Dialog;
 
+                        Button delete = customDialog.findViewById(R.id.btn_delete);
+                        Button cancel = customDialog.findViewById(R.id.btn_cancel);
+
+                        cancel.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                /*Intent intent = new Intent(MaintenanceList.this,
+                                        MaintenanceList.class);
+                                startActivity(intent);
+                                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);*/
+                                customDialog.dismiss();
+                            }
+                        });
                         switch (i) {
 
                             case 0:
@@ -78,8 +109,18 @@ public class MaintenanceList extends AppCompatActivity {
                                 break;
 
                             case 2:
-                                deleteData(maintenanceArrayList.get(position).getMaintenanceID());
-
+                                customDialog.show();
+                                delete.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        deleteData(maintenanceArrayList.get(position).getMaintenanceID());
+                                        customDialog.dismiss();
+                                        Intent intent = new Intent(MaintenanceList.this,
+                                        MaintenanceList.class);
+                                        startActivity(intent);
+                                        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                                    }
+                                });
                                 break;
 
                         }
@@ -117,6 +158,7 @@ public class MaintenanceList extends AppCompatActivity {
                 overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             }
         });
+
     }
 
         private void deleteData(final String maintenanceID) {
@@ -126,12 +168,16 @@ public class MaintenanceList extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
 
+
                         if (response.equalsIgnoreCase("Data Deleted")) {
+
                             Toast.makeText(MaintenanceList.this, "Data Deleted Successfully",
                                     Toast.LENGTH_SHORT).show();
+
                         } else {
-                            Toast.makeText(MaintenanceList.this, "Data Not Deleted",
-                                    Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MaintenanceList.this, "Data Not Deleted",
+                                            Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 }, new Response.ErrorListener() {

@@ -45,7 +45,9 @@ public class AddNewMaintenance extends AppCompatActivity {
 
     private String facilityName, maintenanceTime, maintenanceDate;
     private DatePickerDialog datePicker;
+    //String url1 = "http://10.131.77.213/";
     String url1 = "http://192.168.1.14/";
+    //String url1 = "http://192.168.0.8/";
 
 
     ArrayList<String> facilityList = new ArrayList<>();
