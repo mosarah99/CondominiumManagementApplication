@@ -7,8 +7,7 @@
     android:orientation="vertical"
     android:padding="10dp"
     android:background="#E6EEF4"
-    tools:context=".DetailFacility">
-
+    tools:context=".DetailBooking">
 
     <ImageButton
         android:id="@+id/btnBack"
@@ -20,19 +19,16 @@
         android:layout_marginTop="38dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="5dp"
-        android:layout_toLeftOf="@id/detailFacility"
+        android:layout_toLeftOf="@id/detailMaintenance"
         android:background="@drawable/back_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
+        app:layout_constraintTop_toTopOf="parent" />
     />
 
-
-
     <TextView
-        android:id="@+id/detailFacility"
+        android:id="@+id/detailBooking"
         android:layout_width="297dp"
         android:layout_height="47dp"
         android:layout_alignParentTop="true"
@@ -40,8 +36,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="53dp"
         android:layout_marginEnd="18dp"
-
-        android:text="Details of Facility"
+        android:text="Details of Facility Booking"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -55,7 +50,7 @@
         android:layout_width="359dp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:layout_below="@id/detailFacility"
+        android:layout_below="@id/detailBooking"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/white_column"
@@ -86,9 +81,9 @@
         android:layout_below="@id/txtName"
         android:padding="10dp"
         android:textColor="@color/black"
-        android:text="Location:"
+        android:text="Booking Time:"
         android:textSize="20sp"
-        android:id="@+id/txtLocation"
+        android:id="@+id/txtTime"
         android:layout_marginBottom="10dp"
         />
 
@@ -97,12 +92,12 @@
         android:layout_width="359dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/white_column"
-        android:layout_below="@+id/txtLocation"
+        android:layout_below="@+id/txtTime"
         android:padding="10dp"
         android:textColor="@color/black"
-        android:text="Capacity:"
+        android:text="Booking Date:"
         android:textSize="20sp"
-        android:id="@+id/txtCapacity"
+        android:id="@+id/txtDate"
         android:layout_marginBottom="10dp"
         />
 
@@ -115,6 +110,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-1dp"
         android:scaleType="fitEnd"
         app:srcCompat="@drawable/building" />
+
 </RelativeLayout>

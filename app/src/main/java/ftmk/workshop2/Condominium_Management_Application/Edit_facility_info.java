@@ -22,14 +22,15 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EditFacilityInfo extends AppCompatActivity {
+public class Edit_facility_info extends AppCompatActivity {
 
     ImageButton btnBack;
-    //Button btnUpdate;
     EditText etID, etName, etLocation, etCapacity;
 
     private int position;
-    /*private String facilityName, location, capacity;*/
+    //String url1 = "http://10.131.77.213/";
+    String url1 = "http://192.168.1.14/";
+    //String url1 = "http://192.168.0.8/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,6 @@ public class EditFacilityInfo extends AppCompatActivity {
 
         //Get all Id's
         btnBack = (ImageButton) findViewById(R.id.btnBack);
-        //btnUpdate = (Button) findViewById(R.id.btnUpdate);
 
         etID = (EditText) findViewById(R.id.editTxtFID);
         etName = (EditText) findViewById(R.id.editTxtFName);
@@ -58,43 +58,14 @@ public class EditFacilityInfo extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentBack = new Intent(EditFacilityInfo.this,
-                        FacilitiesSettingMenu.class);
+                Intent intentBack = new Intent(Edit_facility_info.this,
+                        AddNewFacility.class);
                 startActivity(intentBack);
             }
         });
 
-        //Intent to Successful Added Facilities Screen
-        /*btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UpdateFacility();
-            }
-        });*/
-
     }
 
-    /*public void UpdateFacility(){
-
-        facilityName = etName.getText().toString().trim();
-        location = etLocation.getText().toString().trim();
-        capacity = etCapacity.getText().toString().trim();
-
-        // Give a warning to user when the field is empty
-        if(TextUtils.isEmpty(facilityName)){
-            etName.setError("Please enter Facility Name");
-        }else if (TextUtils.isEmpty(location)){
-            etLocation.setError("Please enter Location");
-        }else if (TextUtils.isEmpty(capacity)){
-            etCapacity.setError("Please enter Capacity");
-        }else {
-            //UpdateData(facilityName, location, capacity);
-            //Intent to Successful Added Facilities Screen
-            Intent intentSuccess = new Intent(EditFacilityInfo.this,
-                    SuccessfullUpdatedFacility.class);
-            startActivity(intentSuccess);
-        }
-    }*/
 
     public void fnUpdate(View view){
         final String facilityName = etName.getText().toString().trim();
@@ -112,8 +83,8 @@ public class EditFacilityInfo extends AppCompatActivity {
         }else {
             //UpdateData(facilityName, location, capacity);
             //Intent to Successful Added Facilities Screen
-            Intent intentSuccess = new Intent(EditFacilityInfo.this,
-                    SuccessfullUpdatedFacility.class);
+            Intent intentSuccess = new Intent(Edit_facility_info.this,
+                    SuccessfulUpdatedFacility.class);
             startActivity(intentSuccess);
         }
 
@@ -122,12 +93,12 @@ public class EditFacilityInfo extends AppCompatActivity {
         progressDialog.setMessage("Updating....");
         progressDialog.show();
 
-        StringRequest request = new StringRequest(Request.Method.POST, "http://192.168.1.9/update_facility.php",
+        StringRequest request = new StringRequest(Request.Method.POST, url1+"update_facility.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
-                        Toast.makeText(EditFacilityInfo.this, response,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Edit_facility_info.this, response,Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(),FacilitiesList.class));
                         finish();
                         progressDialog.dismiss();
@@ -136,7 +107,7 @@ public class EditFacilityInfo extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                Toast.makeText(EditFacilityInfo.this,error.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(Edit_facility_info.this,error.getMessage(),Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
         }){
@@ -153,7 +124,7 @@ public class EditFacilityInfo extends AppCompatActivity {
                     return params;
                 }
             };
-        RequestQueue requestQueue = Volley.newRequestQueue(EditFacilityInfo.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(Edit_facility_info.this);
         requestQueue.add(request);
         }
     }
