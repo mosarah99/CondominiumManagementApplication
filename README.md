@@ -1,10 +1,4 @@
-<font color="red"><h3>
-
-```diff
-- This project is archived. No development is undergoing nor is entertained. However, feel free to build on top of it
-```
-
-</h1></font>
+<font color="red"><h3>This project is archived. No development is undergoing nor is entertained. However, feel free to build on top of it</h1></font>
 <br />
 <br />
 
