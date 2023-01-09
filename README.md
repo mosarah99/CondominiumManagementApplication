@@ -1,4 +1,6 @@
-<font color="red"><h3>This project is archived. No development is undergoing nor is entertained. However, feel free to build on top of it</h1></font>
+![This project is archived. No development is undergoing nor is entertained. However, feel free to build on top of it](https://placehold.it/150/ffffff/ff0000?text=This project is archived. No development is undergoing nor is entertained. However, feel free to build on top of it)
+
+This project is archived. No development is undergoing nor is entertained. However, feel free to build on top of it
 <br />
 <br />
 
